@@ -91,11 +91,6 @@ server.1=127.0.0.1:2888:3888
 EOF
 sudo echo 1 >/etc/zookeeper/conf/myid
 
-### marathon
-cd /server
-git clone https://github.com/mesosphere/marathon.git
-cd marathon
-# TODO: build marathon with new protbuf from mesos
 
 ### start processes
 service zookeeper restart
@@ -113,5 +108,3 @@ LD_PRELOAD=/usr/local/lib/libmesos-0.26.0.so /usr/local/sbin/mesos-slave \
   --executor_registration_timeout=5mins \
   --ip=192.168.0.5 \
   --work_dir=/data/mesos >/var/log/mesos/slave-stdout 2>/var/log/mesos/slave-stderr &
-
-# TODO: start marathon
